@@ -7,10 +7,11 @@
 #define SNIPE   6
 
 #include <behaviors/mouse_keys.dtsi>
+#include <dt-bindings/zmk/mouse.h>
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/mouse.h>
+#include <dt-bindings/zmk/pointing.h>
 
 &lt {
     tapping-term-ms = <240>;
@@ -30,17 +31,13 @@
 
         default_layer {
             bindings = <
-// RC(0,4)  RC(0,5)  RC(0,6)  RC(0,0)  RC(0,1)  RC(0,2)                        RC(0,9) RC(0,10) RC(0,11) RC(0,13) RC(0,14) RC(0,15)
-&kp ESC     &kp N1   &kp N2   &kp N3   &kp N4   &kp N5                         &kp N6   &kp N7  &kp N8   &kp N9   &kp N0   &kp MINUS
-// RC(1,4)  RC(1,5)  RC(1,6)  RC(1,0)  RC(1,1)  RC(1,2)                        RC(1,9) RC(1,10) RC(1,11) RC(1,13) RC(1,14) RC(1,15)
-&lt SCROLL GRAVE    &kp Q    &kp W    &kp E    &kp R    &kp T                         &kp Y   &kp U    &kp I    &kp O    &kp P    &kp BSPC  
-// RC(2,4)  RC(2,5)  RC(2,6)  RC(2,0)  RC(2,1)  RC(2,2)                        RC(2,9) RC(2,10) RC(2,11) RC(2,13) RC(2,14) RC(2,15)
-&kp TAB     &kp A    &kp S    &kp D    &kp F    &kp G                          &kp H    &kp J    &kp K    &kp L   &kp SEMI &kp RET
-// RC(3,4)  RC(3,5)  RC(3,6)  RC(3,0)  RC(3,1)  RC(3,2)  RC(3,3)      RC(3,8)  RC(3,9) RC(3,10) RC(3,11) RC(3,13) RC(3,14) RC(3,15)
-&kp LSHFT   &kp Z   &kp X    &kp C    &kp V    &kp B    &kp RBKT      &kp BSLH &kp N   &kp M    &kp COMMA &kp DOT &kp FSLH &kp SQT
-// RC(4,4)  RC(4,5)  RC(4,6)  RC(4,0)  RC(4,1)  RC(4,2)  RC(4,3)      RC(4,8)  RC(4,9)                            RC(4,14) RC(4,15)
-&kp LCTRL   &kp LALT &kp INT1 &kp INT3 &kp EQUAL &mkp LCLK &mkp RCLK  &kp LBKT  &kp SPACE                          &kp LEFT &kp RIGHT
+&kp ESC           &kp N1    &kp N2    &kp N3    &kp N4     &kp N5                          &kp N6       &kp N7  &kp N8     &kp N9   &kp N0    &kp MINUS
+&lt SCROLL GRAVE  &kp Q     &kp W     &kp E     &kp R      &kp T                           &kp Y        &kp U   &kp I      &kp O    &kp P     &kp BSPC
+&kp TAB           &kp A     &kp S     &kp D     &kp F      &kp G                           &kp H        &kp J   &kp K      &kp L    &kp SEMI  &kp RET
+&kp LSHFT         &kp Z     &kp X     &kp C     &kp V      &kp B      &kp RBKT   &kp BSLH  &kp N        &kp M   &kp COMMA  &kp DOT  &kp FSLH  &kp SQT
+&kp LCTRL         &kp LALT  &kp INT1  &kp INT3  &kp EQUAL  &mkp LCLK  &mkp RCLK  &kp LBKT  &lt 2 SPACE                              &kp LEFT  &kp RIGHT
             >;
+
             label = "QWERTY";
         };
 
@@ -70,11 +67,11 @@
         function_layer {
             label = "FUN";
             bindings = <
-&kp ESC &kp F1  &kp F2   &kp F3   &kp F4   &kp F5                  &kp F10 &kp F11 &kp F12 &kp MINUS &kp EQUAL &kp DEL
-&trans  &kp F1  &kp F2   &kp F3   &kp F4   &trans                  &trans  &trans  &trans  &trans  &trans  &kp DEL
-&trans  &kp F5  &kp F6   &kp F7   &kp F8   &trans                  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &kp F9  &kp F10  &kp F11  &kp F12  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans   &trans   &trans   &trans  &trans  &trans  &trans                          &trans  &trans
+&kp ESC  &kp F1  &kp F2   &kp F3   &kp F4   &kp F5                  &kp F10  &kp F11  &kp F12  &kp MINUS  &kp EQUAL  &kp DEL
+&trans   &kp F1  &kp F2   &kp F3   &kp F4   &trans                  &trans   &trans   &trans   &trans     &trans     &kp DEL
+&trans   &kp F5  &kp F6   &kp F7   &kp F8   &trans                  &trans   &trans   &trans   &trans     &trans     &trans
+&trans   &kp F9  &kp F10  &kp F11  &kp F12  &trans  &trans  &trans  &trans   &trans   &trans   &trans     &trans     &trans
+&trans   &trans  &trans   &trans   &trans   &trans  &trans  &trans  &trans                                &trans     &trans
             >;
         };
 
@@ -92,13 +89,12 @@
         scroll_layer {
             label = "SCROLL";
             bindings = <
-&kp ESC &kp F1    &kp F2    &kp F3  &kp F4     &kp F5                  &trans  &trans  &kp F10 &kp F11   &kp F12 &kp PSCRN 
-&trans  &trans    &trans    &trans  &trans     &trans                  &trans  &trans  &trans  &trans    &trans  &kp DEL
-&trans  &trans    &trans    &trans  &trans     &trans                  &trans  &trans  &trans  &trans    &trans  &trans
-&trans  &trans    &trans    &trans  &trans     &trans    &kp UP &trans &bt BT_SEL 1  &trans  &trans  &trans  &trans  &trans
-&trans  &trans    &trans    &trans  &kp LEFT   &kp DOWN  &kp RIGHT     &bt BT_SEL 0  &kp INT5                  &trans  &trans
+&kp ESC  &kp F1  &kp F2  &kp F3  &kp F4    &kp F5                             &trans        &trans  &kp F10  &kp F11  &kp F12  &kp PSCRN
+&trans   &trans  &trans  &trans  &trans    &trans                             &trans        &trans  &trans   &trans   &trans   &kp DEL
+&trans   &trans  &trans  &trans  &trans    &trans                             &trans        &trans  &trans   &trans   &trans   &trans
+&trans   &trans  &trans  &trans  &trans    &trans    &kp UP     &trans        &bt BT_SEL 1  &trans  &trans   &trans   &trans   &trans
+&trans   &trans  &trans  &trans  &kp LEFT  &kp DOWN  &kp RIGHT  &bt BT_SEL 0  &kp INT5                                &trans   &trans
             >;
-
         };
 
         snipe_layer {
